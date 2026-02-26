@@ -1,7 +1,3 @@
-// ============================================================
-// DEMET KOSTÜM EVİ - MODERN JAVASCRIPT
-// ES6+ Modules, Intersection Observer, Performance Optimized
-// ============================================================
 
 // Config
 const CONFIG = {
@@ -30,7 +26,7 @@ const COSTUMES_DB = [
     { id: 15, image: 'images/gocmen.jpg', name: 'Bindallı', category: 'bebek' },
 
 ]
-// State
+
 let currentGalleryFilter = 'all';
 let currentGalleryPage = 1;
 let lightboxCurrentIndex = 0;
@@ -53,9 +49,7 @@ const elements = {
     currentYear: document.getElementById('currentYear')
 };
 
-// ============================================================
-// UTILITY FUNCTIONS
-// ============================================================
+
 
 const debounce = (func, wait) => {
     let timeout;
@@ -115,16 +109,14 @@ const initLoadingScreen = () => {
         }, 600);
     };
     
-    // Başlat
+    
     simulateLoading();
     
-    // Güvenlik: 5 saniye sonra zorla kapat
+
     setTimeout(closeLoading, 5000);
 };
 
-// ============================================================
-// NAVIGATION
-// ============================================================
+
 
 const initNavigation = () => {
     // Scroll effect
@@ -170,9 +162,7 @@ const initNavigation = () => {
     });
 };
 
-// ============================================================
-// COUNTER ANIMATION
-// ============================================================
+
 
 const initCounters = () => {
     const counters = document.querySelectorAll('.counter');
@@ -214,9 +204,7 @@ const initCounters = () => {
     counters.forEach(counter => observer.observe(counter));
 };
 
-// ============================================================
-// GALLERY
-// ============================================================
+
 
 const initGallery = () => {
     const renderGallery = (filter = 'all', page = 1) => {
@@ -249,7 +237,6 @@ const initGallery = () => {
             </article>
         `).join('');
         
-        // Update load more button visibility
         if (elements.loadMoreBtn) {
             elements.loadMoreBtn.style.display = 
                 end >= filteredCostumes.length ? 'none' : 'inline-flex';
@@ -325,9 +312,6 @@ const initGallery = () => {
     renderGallery();
 };
 
-// ============================================================
-// LIGHTBOX
-// ============================================================
 
 const openLightbox = (index) => {
     lightboxCurrentIndex = index;
@@ -391,9 +375,7 @@ const initLightbox = () => {
     });
 };
 
-// ============================================================
-// RESERVATION
-// ============================================================
+
 
 const initReservation = () => {
     if (!elements.reservationBtn) return;
@@ -415,9 +397,7 @@ Teşekkürler!`.trim();
     });
 };
 
-// ============================================================
-// BACK TO TOP
-// ============================================================
+
 
 const initBackToTop = () => {
     if (!elements.backToTop) return;
@@ -438,9 +418,7 @@ const initBackToTop = () => {
     });
 };
 
-// ============================================================
-// TOAST NOTIFICATIONS
-// ============================================================
+
 
 const showToast = (message, type = 'info', duration = 3000) => {
     if (!elements.toastContainer) return;
@@ -468,9 +446,6 @@ const showToast = (message, type = 'info', duration = 3000) => {
     }, duration);
 };
 
-// ============================================================
-// INITIALIZATION
-// ============================================================
 
 const init = () => {
     // Set current year
@@ -520,10 +495,10 @@ const initScrollIndicator = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Hero görünür - yazı göster
+                    
                     scrollDown.classList.remove('hidden');
                 } else {
-                    // Hero kayboldu - yazı gizle
+                 
                     scrollDown.classList.add('hidden');
                 }
             });
@@ -543,16 +518,16 @@ const initScrollIndicator = () => {
         }, { passive: true });
     }
     
-    // Tıklayınca smooth scroll
+
     scrollDown.addEventListener('click', () => {
         document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
     });
 };
 
-// DOM yüklendiğinde çalıştır
+
 document.addEventListener('DOMContentLoaded', () => {
-    // ... diğer init fonksiyonların burada ...
+   
     
-    // EN SON BUNU EKLE:
+
     initScrollIndicator();
 });
